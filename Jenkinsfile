@@ -21,5 +21,14 @@ pipeline{
         }
       }
     }
+    stage("Create a container"){
+      steps{
+        script{
+          sh """
+          docker run -d -p 9090:9090 --name appcontainer cicd:${BUILD_NUMBER}
+          """
+        }
+      }
+    }
   }
 }
