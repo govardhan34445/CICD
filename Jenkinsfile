@@ -12,6 +12,15 @@ pipeline{
         }
       }
     }
+    stage('SonarQube Analysis') {
+      steps {
+        steps{
+           withSonarQubeEnv() {
+              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=java-web-app"
+           }
+        }
+    }
+  }
     stage("Build Docker image"){
       steps{
         script{
