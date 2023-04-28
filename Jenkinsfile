@@ -5,7 +5,10 @@ pipeline{
     stage('Check Syntax'){
       steps{
         script{
-          sh "echo helloworld"
+          sh """
+          ls -al
+          mvn clean package
+          """
         }
       }
     }
