@@ -25,7 +25,7 @@ pipeline{
       steps{
         script{
           sh """
-          docker run -d -p 9090:9090 --name appcontainer cicd:${BUILD_NUMBER}
+          docker run -d -p 9090:8080 --name appcontainer cicd:${BUILD_NUMBER}
           """
         }
       }
