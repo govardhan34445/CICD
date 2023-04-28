@@ -2,7 +2,7 @@ pipeline{
   agent any 
   
   stages{
-    stage('Check Syntax'){
+    stage('Build Maven Package'){
       steps{
         script{
           sh """
