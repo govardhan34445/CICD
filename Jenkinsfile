@@ -12,5 +12,14 @@ pipeline{
         }
       }
     }
+    stage("Build Docker image"){
+      steps{
+        script{
+          sh """
+          docker build -t cicd:${BUILD_NUMBER} .
+          """
+        }
+      }
+    }
   }
 }
