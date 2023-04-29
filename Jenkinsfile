@@ -13,10 +13,13 @@ pipeline{
       }
     }
     stage('SonarQube Analysis') {
+        environment {
+        scannerHome = tool 'sonarqube'
+       }
       steps {
         script{
-           withSonarQubeEnv(sonarqube) {
-              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=java-web-app"
+           withSonarQubeEnv('sonarqube') {
+              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=java-web-app -Dsonar.login=admin -Dsonar.password=Govardhan"
            }
         }
     }
