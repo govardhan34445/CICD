@@ -28,16 +28,16 @@ pipeline{
       steps{
         script{
           sh """
-          docker build -t cicd:${BUILD_NUMBER} .
+          docker build -t govardhandevops/gitlabwebapp::${BUILD_NUMBER} .
           """
         }
       }
     }
-    stage("Create a container"){
+    stage("Push Docker Image"){
       steps{
         script{
           sh """
-          docker run -d -p 9090:8080 --name appcontainer cicd:${BUILD_NUMBER}
+          docker push govardhandevops/gitlabwebapp::${BUILD_NUMBER}
           """
         }
       }
